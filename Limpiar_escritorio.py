@@ -2,6 +2,10 @@ import os
 import shutil
 
 
+
+doc = (".odt", ".doc", ".docx", ".pdf") 
+
+
 audio = (".3ga", ".aac", ".ac3", ".aif", ".aiff",
          ".alac", ".amr", ".ape", ".au", ".dss",
          ".flac", ".flv", ".m4a", ".m4b", ".m4p",
@@ -9,13 +13,18 @@ audio = (".3ga", ".aac", ".ac3", ".aif", ".aiff",
          ".opus", ".qcp", ".tta", ".voc", ".wav",
          ".wma", ".wv")
 
-video = (".webm", ".MTS", ".M2TS", ".TS", ".mov",
-         ".mp4", ".m4p", ".m4v", ".mxf")
-
 img = (".jpg", ".jpeg", ".jfif", ".pjpeg", ".pjp", ".png",
        ".gif", ".webp", ".svg", ".apng", ".avif")
 
-doc = (".odt", ".doc", "docx", ".pdf") 
+
+video = (".webm", ".MTS", ".M2TS", ".TS", ".mov",
+         ".mp4", ".m4p", ".m4v", ".mxf")
+
+
+
+
+def is_documents(file):
+    return os.path.splitext(file)[1] in doc
 
 def is_audio(file):
     return os.path.splitext(file)[1] in audio
@@ -30,8 +39,6 @@ def is_screenshot(file):
     name, ext = os.path.splitext(file)
     return (ext in img) and "screenshot" in name.lower()
 
-def is_documents(file):
-    return os.path.splitext(file)[1] in doc
 
 
 os.chdir("/home/franz/Escritorio/Electronexuz")  ## os no admite valores numericos
